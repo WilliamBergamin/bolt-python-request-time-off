@@ -20,9 +20,8 @@ request.
   - [Create a Link Trigger](#create-a-link-trigger)
   - [Running Your Project Locally](#running-your-project-locally)
   - [Project Structure](#project-structure)
-    - [`/manifest`](#manifest)
-    - [`/manifest/manifest.json`](#manifestmanifestjson)
-    - [`/manifest/triggers`](#manifesttriggers)
+    - [`manifest.json`](#manifestjson)
+    - [`/triggers`](#triggers)
     - [`slack.json`](#slackjson)
     - [`/functions`](#functions)
   - [Resources](#resources)
@@ -97,7 +96,7 @@ To create a link trigger for the "Request Time Off" workflow, run the following
 command:
 
 ```zsh
-slack trigger create --trigger-def triggers/trigger.ts
+slack trigger create --trigger-def triggers/time_off_request.json
 ```
 
 After selecting a Workspace, the output provided will include the link trigger
@@ -130,22 +129,19 @@ To stop running locally, press `<CTRL> + C` to end the process.
 
 ## Project Structure
 
-### `/manifest`
-
-This directory contains all related initialization of the app as well as any
-workflow or function definitions used in the project.
-
-### `/manifest/manifest.json`
+### `manifest.json`
 
 `manifest.json` is a configuration for Slack CLI apps in JSON. This file will
 establish all basic configurations for your application, including app name
 and description.
 
-### `/manifest/triggers`
+Within the manifest are initializations for [workflows](https://api.slack.com/future/workflows) and [functions](https://api.slack.com/future/functions).
+
+### `/triggers`
 
 All trigger configuration files live in here - for this example,
-`link-shortcut.json` is the trigger config for a trigger that starts the workflow
- initialized in `/manifest/manifest.json`.
+`time_off_request.json` is the trigger config for a trigger that starts the Time Off Request workflow
+ initialized in `manifest.json`.
 
 ### `slack.json`
 
